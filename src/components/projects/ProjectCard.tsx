@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 export type ProjectCardProps = {
   slug: string;
@@ -22,19 +23,21 @@ export default function ProjectCard({
       data-testid={`project-card-${slug}`}
       className="rounded-md overflow-hidden border border-muted bg-body"
     >
-      <Link href={`/projects/${slug}`} className="block">
-        <div className="h-40 w-full mb-3 bg-brand-700 flex items-center justify-center">
-          {hero ? (
-            <img
-              src={hero}
-              alt={title + " screenshot"}
-              className="w-full h-full object-cover"
+        <Link href={`/projects/${slug}`} className="block">
+        <div className="relative w-full aspect-[16/9] overflow-hidden rounded-md bg-brand-700">
+        {hero ? (
+            <Image
+            src={hero}
+            alt={`${title} screenshot`}
+            fill
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+            className="object-cover object-center"
             />
-          ) : (
+        ) : (
             <div className="w-full h-full flex items-center justify-center text-muted">
-              <span className="text-sm">No image</span>
+            <span className="text-sm">No image</span>
             </div>
-          )}
+        )}
         </div>
 
         <div className="px-4 pb-4">
