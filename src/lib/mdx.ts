@@ -8,9 +8,14 @@ import { ReactNode } from "react";
 
 // Constants
 const CONTENT_DIR = path.resolve(process.cwd(), "content", "projects");
+
+const isoDate = z.string().refine((s) => !s || /^\d{4}-\d{2}-\d{2}$/.test(s), {
+  message: "date must be in YYYY-MM-DD format",
+});
+
 const frontmatterSchema = z.object({
-  title: z.string().optional(),
-  date: z.string().optional(),
+  title: z.string().min(1, "title is required"),
+  date: isoDate.optional(),
   stack: z.array(z.string()).optional(),
   summary: z.string().optional(),
   hero: z.string().optional(),
