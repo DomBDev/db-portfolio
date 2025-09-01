@@ -1,8 +1,17 @@
-# Portfolio — Next.js + Tailwind
-Primary goal: Job applications and freelance clients
-Hosting: Debian 12 DigitalOcean droplet (self-hosted)
-Stack: Next.js + TypeScript + Tailwind CSS
-Content source: MDX files in repo (CMS later)
-Theme: Dark-first with light toggle, brown themed
-Contact: Email form required 
-Notes: Use `content/projects/` for MDX project files and `/public/assets/projects/` for images.
+# Portfolio: Next.js + Tailwind
+
+## Goal
+Job applications + freelance clients. Minimal, updatable portfolio that displays projects, case studies, and career development.
+
+## Current status
+- Next.js (App Router) + TypeScript scaffolded.
+- MDX loader implemented (`src/lib/mdx.ts`).
+- Example project page available at `/projects/example`.
+- Tailwind + typography, basic brown theme tokens in `src/styles/globals.css`.
+
+## Next priorities
+- Projects index + ProjectCard
+- Theme module + toggle (class)
+- Contact API
+- SEO + sitemap + 404
+- CI, tests, and deploy
