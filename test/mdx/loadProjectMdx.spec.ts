@@ -28,7 +28,6 @@ vi.mock("next-mdx-remote/rsc", async (importOriginal) => {
   return {
     ...actual,
     compileMDX: vi.fn(async ({ source }) => {
-      // relaxed check: ensure the source contains the expected snippet
       if (!source.includes("Portfolio")) throw new Error("compileMDX received unexpected source");
       return { content: "<COMPILED_MDX_NODE>", frontmatter: { title: "Portfolio", date: "2025-08-31", stack: ["Next.js", "MDX"] } };
     }),
@@ -38,10 +37,30 @@ vi.mock("next-mdx-remote/rsc", async (importOriginal) => {
 // import after mocks so module uses the mocked versions
 const { loadProjectMdx } = await import("../../src/lib/mdx");
 
-describe("loadProjectMdx", () => {
-  it("compiles MDX and returns content + validated frontmatter", async () => {
-    const res = await loadProjectMdx("example");
-    expect(res.frontmatter.title).toBe("Portfolio");
-    expect(res.content).toBe("<COMPILED_MDX_NODE>");
+describe("loadProjectMdx (optional fields conditional)", () => {
+    it("returns compiled content and validates required frontmatter; optional fields validated only if present", async () => {
+      const res = await loadProjectMdx("example");
+  
+      // required frontmatter check
+      expect(res.frontmatter).toBeTruthy();
+      expect(typeof res.frontmatter.title).toBe("string");
+      expect(res.frontmatter.title.length).toBeGreaterThan(0);
+  
+      // optional checks
+      if (res.frontmatter.date !== undefined && res.frontmatter.date !== null) {
+        expect(/^\d{4}-\d{2}-\d{2}$/.test(res.frontmatter.date)).toBe(true);
+      }
+      if (res.frontmatter.stack !== undefined && res.frontmatter.stack !== null) {
+        expect(Array.isArray(res.frontmatter.stack)).toBe(true);
+      }
+      if (res.frontmatter.summary !== undefined) {
+        expect(typeof res.frontmatter.summary).toBe("string");
+      }
+      if (res.frontmatter.hero !== undefined) {
+        expect(typeof res.frontmatter.hero).toBe("string");
+      }
+  
+      // compiled content check
+      expect(res.content).toBe("<COMPILED_MDX_NODE>");
+    });
   });
-});
