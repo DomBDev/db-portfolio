@@ -45,5 +45,16 @@ describe("readProjectFrontmatter (optional fields conditional)", () => {
     if (fm.hero !== undefined) {
       expect(typeof fm.hero).toBe("string");
     }
+
+    if (fm.repo !== undefined) {
+      expect(typeof fm.repo).toBe("string");
+    }
+    if (fm.live !== undefined) {
+      expect(typeof fm.live).toBe("string");
+    }
+    if (fm.images !== undefined) {
+      expect(Array.isArray(fm.images)).toBe(true);
+    }
+    
   });
 });

@@ -59,6 +59,16 @@ describe("loadProjectMdx (optional fields conditional)", () => {
       if (res.frontmatter.hero !== undefined) {
         expect(typeof res.frontmatter.hero).toBe("string");
       }
+
+      if (res.frontmatter.repo !== undefined) {
+        expect(typeof res.frontmatter.repo).toBe("string");
+      }
+      if (res.frontmatter.live !== undefined) {
+        expect(typeof res.frontmatter.live).toBe("string");
+      }
+      if (res.frontmatter.images !== undefined) {
+        expect(Array.isArray(res.frontmatter.images)).toBe(true);
+      }
   
       // compiled content check
       expect(res.content).toBe("<COMPILED_MDX_NODE>");
