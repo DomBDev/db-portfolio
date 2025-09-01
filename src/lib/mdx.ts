@@ -19,6 +19,9 @@ const frontmatterSchema = z.object({
   stack: z.array(z.string()).optional(),
   summary: z.string().optional(),
   hero: z.string().optional(),
+  repo: z.string().optional(),
+  live: z.string().optional(),
+  images: z.array(z.string()).optional(),
 });
 type Frontmatter = z.infer<typeof frontmatterSchema>;
 
