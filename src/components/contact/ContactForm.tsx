@@ -53,7 +53,7 @@ export default function ContactForm() {
         aria-hidden 
       />
       
-      <div className="space-y-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
         <div>
           <label className="block text-sm font-medium mb-1">
             Name
@@ -62,7 +62,7 @@ export default function ContactForm() {
               onChange={(e)=>setName(e.target.value)} 
               maxLength={100} 
               required
-              className="mt-1 block w-full rounded border border-brand/20 bg-body px-3 py-2 text-sm focus:border-brand focus:outline-none focus:ring-1 focus:ring-brand" 
+              className="mt-1 block w-full rounded-lg border border-brand-200/20 bg-surface-50 px-4 py-2.5 text-sm text-brand-50 transition-colors focus:border-brand-400 focus:outline-none focus:ring-1 focus:ring-brand-400 placeholder-brand-300" 
             />
           </label>
         </div>
@@ -75,12 +75,12 @@ export default function ContactForm() {
               onChange={(e)=>setEmail(e.target.value)} 
               type="email" 
               required
-              className="mt-1 block w-full rounded border border-brand/20 bg-body px-3 py-2 text-sm focus:border-brand focus:outline-none focus:ring-1 focus:ring-brand" 
+              className="mt-1 block w-full rounded-lg border border-brand-200/20 bg-surface-50 px-4 py-2.5 text-sm text-brand-50 transition-colors focus:border-brand-400 focus:outline-none focus:ring-1 focus:ring-brand-400 placeholder-brand-300" 
             />
           </label>
         </div>
 
-        <div>
+        <div className="sm:col-span-2">
           <label className="block text-sm font-medium mb-1">
             Subject
             <input 
@@ -88,12 +88,12 @@ export default function ContactForm() {
               onChange={(e)=>setSubject(e.target.value)} 
               maxLength={200} 
               required
-              className="mt-1 block w-full rounded border border-brand/20 bg-body px-3 py-2 text-sm focus:border-brand focus:outline-none focus:ring-1 focus:ring-brand" 
+              className="mt-1 block w-full rounded-lg border border-brand-200/20 bg-surface-50 px-4 py-2.5 text-sm text-brand-50 transition-colors focus:border-brand-400 focus:outline-none focus:ring-1 focus:ring-brand-400 placeholder-brand-300" 
             />
           </label>
         </div>
 
-        <div>
+        <div className="sm:col-span-2">
           <label className="block text-sm font-medium mb-1">
             Message
             <textarea 
@@ -103,31 +103,35 @@ export default function ContactForm() {
               maxLength={5000} 
               required
               rows={6}
-              className="mt-1 block w-full rounded border border-brand/20 bg-body px-3 py-2 text-sm focus:border-brand focus:outline-none focus:ring-1 focus:ring-brand resize-y" 
+              className="mt-1 block w-full rounded-lg border border-brand/20 bg-body px-4 py-2.5 text-sm transition-colors focus:border-brand focus:outline-none focus:ring-1 focus:ring-brand resize-y" 
             />
           </label>
         </div>
       </div>
 
-      <div>
+      <div className="sm:col-span-2">
         <button 
           type="submit" 
           disabled={status === "loading"}
-          className="w-full rounded bg-brand px-4 py-2 text-sm font-medium text-white hover:bg-brand-700 focus:outline-none focus:ring-2 focus:ring-brand focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed"
+          className="w-full rounded-lg bg-brand-500 px-4 py-3 text-sm font-medium text-white transition-colors hover:bg-brand-600 focus:outline-none focus:ring-2 focus:ring-brand-400 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed"
         >
           {status === "loading" ? "Sending..." : "Send Message"}
         </button>
       </div>
 
       {status === "success" && (
-        <p className="text-sm text-green-600 dark:text-green-400">
-          Message sent successfully. Thank you for reaching out!
-        </p>
+        <div className="sm:col-span-2 rounded-lg bg-green-50 dark:bg-green-900/20 p-4">
+          <p className="text-sm text-green-600 dark:text-green-400">
+            Message sent successfully. Thank you for reaching out!
+          </p>
+        </div>
       )}
       {status === "error" && (
-        <p className="text-sm text-red-600 dark:text-red-400" role="alert">
-          Error: {error}
-        </p>
+        <div className="sm:col-span-2 rounded-lg bg-red-50 dark:bg-red-900/20 p-4">
+          <p className="text-sm text-red-600 dark:text-red-400" role="alert">
+            Error: {error}
+          </p>
+        </div>
       )}
     </form>
   );

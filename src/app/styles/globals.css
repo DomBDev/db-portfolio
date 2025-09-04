@@ -2,11 +2,29 @@
 @plugin '@tailwindcss/typography';
 
 :root {
+  /* Base colors */
   --color-bg: #0f0b09;
   --color-fg: #efe6e0;
   --color-muted: #c8bfb8;
-  --color-brand: #8b5e3c;
+  
+  /* Brand colors */
+  --color-brand-50: #f9f5f2;
+  --color-brand-100: #f3e9e1;
+  --color-brand-200: #e5d1c3;
+  --color-brand-300: #d4b4a0;
+  --color-brand-400: #bd8f73;
+  --color-brand-500: #8b5e3c;
+  --color-brand-600: #7a4f33;
   --color-brand-700: #5b3a27;
+  --color-brand-800: #42291c;
+  --color-brand-900: #2e1c13;
+  
+  /* Surface colors */
+  --color-surface-50: rgba(239, 230, 224, 0.05);
+  --color-surface-100: rgba(239, 230, 224, 0.1);
+  --color-surface-200: rgba(239, 230, 224, 0.2);
+  
+  /* Fonts */
   --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
   --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, "Roboto Mono", monospace;
 }
@@ -15,8 +33,19 @@
   --bg: var(--color-bg);
   --fg: var(--color-fg);
   --muted: var(--color-muted);
-  --brand: var(--color-brand);
+  --brand-50: var(--color-brand-50);
+  --brand-100: var(--color-brand-100);
+  --brand-200: var(--color-brand-200);
+  --brand-300: var(--color-brand-300);
+  --brand-400: var(--color-brand-400);
+  --brand-500: var(--color-brand-500);
+  --brand-600: var(--color-brand-600);
   --brand-700: var(--color-brand-700);
+  --brand-800: var(--color-brand-800);
+  --brand-900: var(--color-brand-900);
+  --surface-50: var(--color-surface-50);
+  --surface-100: var(--color-surface-100);
+  --surface-200: var(--color-surface-200);
   --font-sans: var(--font-sans);
   --font-mono: var(--font-mono);
 }
@@ -26,8 +55,21 @@
     --color-bg: #fffaf7;
     --color-fg: #111111;
     --color-muted: #6b5a4a;
-    --color-brand: #7a4f33;
+    
+    --color-brand-50: #fdf8f6;
+    --color-brand-100: #f9ede7;
+    --color-brand-200: #f3d9cd;
+    --color-brand-300: #e9bda8;
+    --color-brand-400: #d69676;
+    --color-brand-500: #b56e4d;
+    --color-brand-600: #7a4f33;
     --color-brand-700: #5b3a27;
+    --color-brand-800: #42291c;
+    --color-brand-900: #2e1c13;
+    
+    --color-surface-50: rgba(17, 17, 17, 0.05);
+    --color-surface-100: rgba(17, 17, 17, 0.1);
+    --color-surface-200: rgba(17, 17, 17, 0.2);
   }
 }
 
@@ -40,8 +82,35 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* Base colors */
 .bg-body { background-color: var(--bg); }
 .text-body { color: var(--fg); }
 .text-muted { color: var(--muted); }
-.bg-brand { background-color: var(--brand); }
-.text-brand { color: var(--brand); }
+
+/* Brand colors */
+.bg-brand-50 { background-color: var(--brand-50); }
+.bg-brand-100 { background-color: var(--brand-100); }
+.bg-brand-200 { background-color: var(--brand-200); }
+.bg-brand-300 { background-color: var(--brand-300); }
+.bg-brand-400 { background-color: var(--brand-400); }
+.bg-brand-500 { background-color: var(--brand-500); }
+.bg-brand-600 { background-color: var(--brand-600); }
+.bg-brand-700 { background-color: var(--brand-700); }
+.bg-brand-800 { background-color: var(--brand-800); }
+.bg-brand-900 { background-color: var(--brand-900); }
+
+.text-brand-50 { color: var(--brand-50); }
+.text-brand-100 { color: var(--brand-100); }
+.text-brand-200 { color: var(--brand-200); }
+.text-brand-300 { color: var(--brand-300); }
+.text-brand-400 { color: var(--brand-400); }
+.text-brand-500 { color: var(--brand-500); }
+.text-brand-600 { color: var(--brand-600); }
+.text-brand-700 { color: var(--brand-700); }
+.text-brand-800 { color: var(--brand-800); }
+.text-brand-900 { color: var(--brand-900); }
+
+/* Surface colors */
+.bg-surface-50 { background-color: var(--surface-50); }
+.bg-surface-100 { background-color: var(--surface-100); }
+.bg-surface-200 { background-color: var(--surface-200); }

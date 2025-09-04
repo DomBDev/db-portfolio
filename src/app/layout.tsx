@@ -1,6 +1,7 @@
 import "./styles/globals.css";
 import { generateMetadata as generateBaseMetadata, siteConfig } from "@/lib/metadata";
 import { Viewport } from "next";
+import Header from "@/components/layout/Header";
 
 export const metadata = generateBaseMetadata({});
 
@@ -15,7 +16,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <body className="min-h-screen">
-        <div className="py-12">
+        <Header />
+        <div className="py-8">
           {children}
         </div>
       </body>

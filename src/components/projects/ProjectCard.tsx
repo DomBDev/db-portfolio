@@ -21,35 +21,43 @@ export default function ProjectCard({
   return (
     <article
       data-testid={`project-card-${slug}`}
-      className="rounded-md overflow-hidden border border-muted bg-body"
+      className="group rounded-lg overflow-hidden border border-brand-200/10 bg-surface-50 transition-all hover:bg-surface-100 hover:border-brand-200/20"
     >
-        <Link href={`/projects/${slug}`} className="block">
-        <div className="relative w-full aspect-[16/9] overflow-hidden rounded-md bg-brand-700">
-        {hero ? (
+      <Link href={`/projects/${slug}`} className="block">
+        <div className="relative w-full aspect-[16/9] overflow-hidden bg-brand-800">
+          {hero ? (
             <Image
-            src={hero}
-            alt={`${title} screenshot`}
-            fill
-            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-            className="object-cover object-center"
+              src={hero}
+              alt={`${title} screenshot`}
+              fill
+              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+              className="object-cover object-center transition-transform duration-300 group-hover:scale-105"
             />
-        ) : (
-            <div className="w-full h-full flex items-center justify-center text-muted">
-            <span className="text-sm">No image</span>
+          ) : (
+            <div className="w-full h-full flex items-center justify-center text-brand-200">
+              <span className="text-sm">No image</span>
             </div>
-        )}
+          )}
         </div>
 
-        <div className="px-4 pb-4">
-          <h3 className="text-lg font-semibold mb-1 text-fg">{title}</h3>
+        <div className="p-4">
+          <h3 className="text-lg font-semibold mb-2 text-brand-100 group-hover:text-brand-50 transition-colors">
+            {title}
+          </h3>
 
           {summary ? (
-            <p className="text-sm text-muted mb-2 line-clamp-3">{summary}</p>
+            <p className="text-sm text-brand-200 mb-4 line-clamp-3">{summary}</p>
           ) : null}
 
-          <div className="flex items-center justify-between text-xs text-muted">
-            <div>{date ?? null}</div>
-            <div>{stack.length ? stack.join(", ") : null}</div>
+          <div className="flex flex-wrap gap-2 items-center justify-between text-xs">
+            <div className="text-brand-200">{date ?? null}</div>
+            <div className="flex flex-wrap gap-1">
+              {stack.map((tech) => (
+                <span key={tech} className="px-2 py-1 rounded-full bg-surface-100 text-brand-100">
+                  {tech}
+                </span>
+              ))}
+            </div>
           </div>
         </div>
       </Link>
