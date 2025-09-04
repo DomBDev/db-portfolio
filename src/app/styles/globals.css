@@ -1,7 +1,6 @@
 @import "tailwindcss";
 @plugin '@tailwindcss/typography';
 
-/* dark default */
 :root {
   --color-bg: #0f0b09;
   --color-fg: #efe6e0;
@@ -12,7 +11,6 @@
   --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, "Roboto Mono", monospace;
 }
 
-/* inline theme block */
 @theme inline {
   --bg: var(--color-bg);
   --fg: var(--color-fg);
@@ -23,7 +21,6 @@
   --font-mono: var(--font-mono);
 }
 
-/* Light mode override */
 @media (prefers-color-scheme: light) {
   :root {
     --color-bg: #fffaf7;
@@ -34,7 +31,6 @@
   }
 }
 
-/* Base layout */
 html, body, #__next { height: 100%; }
 body {
   background: var(--bg);
@@ -44,7 +40,6 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Small helpers */
 .bg-body { background-color: var(--bg); }
 .text-body { color: var(--fg); }
 .text-muted { color: var(--muted); }
