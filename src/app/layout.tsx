@@ -1,8 +1,14 @@
 import "./styles/globals.css";
+import { generateMetadata as generateBaseMetadata, siteConfig } from "@/lib/metadata";
+import { Viewport } from "next";
 
-export const metadata = {
-  title: "Dom's Portfolio",
-  description: "Portfolio: Dom",
+export const metadata = generateBaseMetadata({});
+
+export const viewport: Viewport = {
+  themeColor: siteConfig.themeColor,
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 1,
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

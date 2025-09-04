@@ -1,6 +1,25 @@
 import { listProjectSlugs, loadProjectMdx } from "@/lib/mdx";
+import { generateMetadata as generateBaseMetadata } from "@/lib/metadata";
 import Link from "next/link";
 import Image from "next/image";
+import { Metadata } from "next";
+
+export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
+  try {
+    const { frontmatter } = await loadProjectMdx(params.slug);
+    return generateBaseMetadata({
+      title: frontmatter?.title,
+      description: frontmatter?.summary,
+      image: frontmatter?.hero || frontmatter?.images?.[0]
+    });
+  } catch {
+    return generateBaseMetadata({
+      title: "Project Not Found",
+      description: "The requested project could not be found.",
+      noIndex: true
+    });
+  }
+}
 
 export async function generateStaticParams() {
   const slugs = await listProjectSlugs();

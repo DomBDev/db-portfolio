@@ -81,7 +81,18 @@ export async function loadProjectMdx(slug: string): Promise<{ content: ReactNode
   return { content: compiled.content as ReactNode, frontmatter: parseResult.data };
 }
 
-export async function readProjectFrontmatter( slug: string): Promise<Frontmatter> {
+export async function getAllProjects(): Promise<Array<Frontmatter & { slug: string }>> {
+  const slugs = await listProjectSlugs();
+  const projects = await Promise.all(
+    slugs.map(async (slug) => ({
+      slug,
+      ...(await readProjectFrontmatter(slug))
+    }))
+  );
+  return projects;
+}
+
+export async function readProjectFrontmatter(slug: string): Promise<Frontmatter> {
   ensureSafeSlug(slug);
   const filePath = path.resolve(CONTENT_DIR, `${slug}.mdx`);
   ensureInsideContentDir(filePath);
