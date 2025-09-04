@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { ensureSafeSlug } from "../../src/lib/mdx";
+import { ensureSafeSlug } from "@/lib/mdx";
 
 describe("ensureSafeSlug", () => {
   it("accepts valid slugs", () => {

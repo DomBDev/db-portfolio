@@ -17,19 +17,17 @@ stack: ["Next.js", "MDX"]
 });
 
 // import after mocks so module uses mocked fs
-const { readProjectFrontmatter } = await import("../../src/lib/mdx");
+const { readProjectFrontmatter } = await import("@/lib/mdx");
 
 describe("readProjectFrontmatter (optional fields conditional)", () => {
   it("ensures required fields and conditionally validates optional fields", async () => {
     const fm = await readProjectFrontmatter("example");
 
-    // required
+    // required fields
     expect(typeof fm.title).toBe("string");
     expect(fm.title.length).toBeGreaterThan(0);
 
-    // optional: only assert if present
     if (fm.date !== undefined && fm.date !== null) {
-      // basic ISO YYYY-MM-DD check
       expect(/^\d{4}-\d{2}-\d{2}$/.test(fm.date)).toBe(true);
     }
 

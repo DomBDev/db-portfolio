@@ -35,7 +35,7 @@ vi.mock("next-mdx-remote/rsc", async (importOriginal) => {
 });
 
 // import after mocks so module uses the mocked versions
-const { loadProjectMdx } = await import("../../src/lib/mdx");
+const { loadProjectMdx } = await import("@/lib/mdx");
 
 describe("loadProjectMdx (optional fields conditional)", () => {
     it("returns compiled content and validates required frontmatter; optional fields validated only if present", async () => {
